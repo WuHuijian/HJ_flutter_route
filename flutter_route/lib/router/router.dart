@@ -5,7 +5,8 @@ import './router.internal.dart';
 @ARouteRoot()
 class HJRouter extends Navigator{
 
-  static Widget notFoundPage;
+  static Widget PAGE_UNREGISTERED;//未注册的页面
+  static Widget PAGE_REDIRECT;//重定向页面
 
   // 获取所有路由
   static Map<String, WidgetBuilder> getAllRoutes() {
@@ -47,6 +48,9 @@ class HJRouter extends Navigator{
       return routerResult.widget;
     } else if (routerResult.state == ARouterResultState.REDIRECT) {
       //重定向
+      if (PAGE_REDIRECT != null) {
+        return PAGE_REDIRECT;
+      }
       return Scaffold(
         appBar: AppBar(),
         body: Center(
@@ -54,8 +58,8 @@ class HJRouter extends Navigator{
         ),
       );
     } else {
-      if (notFoundPage != null) {
-        return notFoundPage;
+      if (PAGE_UNREGISTERED != null) {
+        return PAGE_UNREGISTERED;
       } else {
         return Scaffold(
           appBar: AppBar(),

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+//import 'package:flutter_route/demo/home_list.dart';
 import 'package:flutter_route/router/router.dart';
 
 void main() => runApp(MyApp());
@@ -12,7 +13,8 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-     routes: HJRouter.getAllRoutes(),
+//    home: HJHomeList(),
+    routes: HJRouter.getAllRoutes(),
       initialRoute: '/',
     );
   }

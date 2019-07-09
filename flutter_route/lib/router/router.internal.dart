@@ -6,30 +6,39 @@
 
 import 'dart:convert';
 import 'package:annotation_route/route.dart';
-import 'package:flutter_route/demo/page_d.dart';
 import 'package:flutter_route/demo/page_b.dart';
 import 'package:flutter_route/demo/home_list.dart';
-import 'package:flutter_route/demo/page_a.dart';
 import 'package:flutter_route/demo/page_c.dart';
+import 'package:flutter_route/demo/page_d.dart';
+import 'package:flutter_route/demo/page_a.dart';
 
 class ARouterInternalImpl extends ARouterInternal {
   ARouterInternalImpl();
   final Map<String, List<Map<String, dynamic>>> innerRouterMap =
       <String, List<Map<String, dynamic>>>{
-    'myapp://paged': [
-      {'clazz': D, 'params': '{"parama":"d"}'}
-    ],
     'app://page/b': [
       {'clazz': PageB}
     ],
     '/': [
       {'clazz': HJHomeList}
     ],
-    'app://page/a': [
-      {'clazz': PageA}
-    ],
     'app://page/c': [
       {'clazz': PageC}
+    ],
+    'app://page/d': [
+      {'clazz': PageD}
+    ],
+    'app://page/d/open': [
+      {'clazz': PageD}
+    ],
+    'app://page/d/openReplacement': [
+      {'clazz': PageD}
+    ],
+    'app://page/d/openAndRemoveUntil': [
+      {'clazz': PageD}
+    ],
+    'app://page/a': [
+      {'clazz': PageA}
     ]
   };
 
@@ -54,16 +63,16 @@ class ARouterInternalImpl extends ARouterInternal {
 
   dynamic instanceFromClazz(Type clazz, dynamic option) {
     switch (clazz) {
-      case D:
-        return new D(option);
       case PageB:
         return new PageB(option);
       case HJHomeList:
         return new HJHomeList(option);
-      case PageA:
-        return new PageA(option);
       case PageC:
         return new PageC(option);
+      case PageD:
+        return new PageD(option);
+      case PageA:
+        return new PageA(option);
       default:
         return null;
     }

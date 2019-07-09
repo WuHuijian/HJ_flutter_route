@@ -30,7 +30,6 @@ class _HJHomeListState extends State<HJHomeList> {
           title: Text('PageA'),
           onTap: () {
             HJRouter.open(context, 'app://page/a');
-//            HJRouter.of(context).pushNamed('app://page/a');
           }),
       ListTile(
           title: Text('PageB'),
@@ -41,6 +40,14 @@ class _HJHomeListState extends State<HJHomeList> {
           title: Text('PageC'),
           onTap: () {
             HJRouter.open(context, 'app://page/c', params: {'pageIndex': 1})
+                .then((value) {
+              showSimpleDialog(value);
+            });
+          }),
+      ListTile(
+          title: Text('PageD'),
+          onTap: () {
+            HJRouter.open(context, 'app://page/d/open', params: {'pageIndex': 1})
                 .then((value) {
               showSimpleDialog(value);
             });
